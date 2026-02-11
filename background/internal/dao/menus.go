@@ -33,8 +33,8 @@ type MenusDao interface {
 
 type menusDao struct {
 	db    *gorm.DB
-	cache cache.MenusCache // if nil, the cache is not used.
-	sfg   *singleflight.Group    // if cache is nil, the sfg is not used.
+	cache cache.MenusCache    // if nil, the cache is not used.
+	sfg   *singleflight.Group // if cache is nil, the sfg is not used.
 }
 
 // NewMenusDao creating the dao interface
@@ -90,7 +90,7 @@ func (d *menusDao) updateDataByID(ctx context.Context, db *gorm.DB, table *model
 	}
 
 	update := map[string]interface{}{}
-	
+
 	if table.Name != "" {
 		update["name"] = table.Name
 	}
@@ -106,7 +106,6 @@ func (d *menusDao) updateDataByID(ctx context.Context, db *gorm.DB, table *model
 	if table.Order != 0 {
 		update["order"] = table.Order
 	}
-	
 
 	return db.WithContext(ctx).Model(table).Updates(update).Error
 }

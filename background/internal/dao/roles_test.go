@@ -59,7 +59,6 @@ func Test_rolesDao_DeleteByID(t *testing.T) {
 	defer d.Close()
 	testData := d.TestData.(*model.Roles)
 	expectedSQLForDeletion := "DELETE .*"
-	
 
 	d.SQLMock.ExpectBegin()
 	d.SQLMock.ExpectExec(expectedSQLForDeletion).
@@ -96,7 +95,7 @@ func Test_rolesDao_UpdateByID(t *testing.T) {
 	// zero id error
 	err = d.IDao.(RolesDao).UpdateByID(d.Ctx, &model.Roles{})
 	assert.Error(t, err)
-	
+
 }
 
 func Test_rolesDao_GetByID(t *testing.T) {
@@ -203,7 +202,6 @@ func Test_rolesDao_DeleteByTx(t *testing.T) {
 	defer d.Close()
 	testData := d.TestData.(*model.Roles)
 	expectedSQLForDeletion := "DELETE .*"
-	
 
 	d.SQLMock.ExpectBegin()
 	d.SQLMock.ExpectExec(expectedSQLForDeletion).

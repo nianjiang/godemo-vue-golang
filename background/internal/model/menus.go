@@ -28,5 +28,3 @@ var MenusColumnNames = map[string]bool{
 	"parent_id":  true,
 	"order":      true,
 }
-
-

@@ -7,7 +7,7 @@ import (
 // files business-level http error codes.
 // the filesNO value range is 1~999, if the same error code is used, it will cause panic.
 var (
-	filesNO = 16
+	filesNO       = 16
 	filesName     = "files"
 	filesBaseCode = errcode.HCode(filesNO)
 

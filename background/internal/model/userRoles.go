@@ -10,5 +10,3 @@ var UserRolesColumnNames = map[string]bool{
 	"user_id": true,
 	"role_id": true,
 }
-
-

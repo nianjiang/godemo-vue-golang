@@ -103,7 +103,7 @@ func Test_rolesHandler_Create(t *testing.T) {
 	}
 
 	t.Logf("%+v", result)
-	
+
 }
 
 func Test_rolesHandler_DeleteByID(t *testing.T) {
@@ -111,7 +111,6 @@ func Test_rolesHandler_DeleteByID(t *testing.T) {
 	defer h.Close()
 	testData := h.TestData.(*model.Roles)
 	expectedSQLForDeletion := "DELETE .*"
-	
 
 	h.MockDao.SQLMock.ExpectBegin()
 	h.MockDao.SQLMock.ExpectExec(expectedSQLForDeletion).

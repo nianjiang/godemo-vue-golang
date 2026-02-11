@@ -32,5 +32,3 @@ var UsersColumnNames = map[string]bool{
 	"user_email":  true,
 	"status":      true,
 }
-
-

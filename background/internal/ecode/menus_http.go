@@ -7,7 +7,7 @@ import (
 // menus business-level http error codes.
 // the menusNO value range is 1~999, if the same error code is used, it will cause panic.
 var (
-	menusNO = 26
+	menusNO       = 26
 	menusName     = "menus"
 	menusBaseCode = errcode.HCode(menusNO)
 

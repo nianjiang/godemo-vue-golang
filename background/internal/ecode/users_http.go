@@ -7,7 +7,7 @@ import (
 // users business-level http error codes.
 // the usersNO value range is 1~999, if the same error code is used, it will cause panic.
 var (
-	usersNO = 93
+	usersNO       = 93
 	usersName     = "users"
 	usersBaseCode = errcode.HCode(usersNO)
 

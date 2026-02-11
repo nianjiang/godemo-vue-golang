@@ -90,7 +90,7 @@ func (d *permissionsDao) updateDataByID(ctx context.Context, db *gorm.DB, table 
 	}
 
 	update := map[string]interface{}{}
-	
+
 	if table.Name != "" {
 		update["name"] = table.Name
 	}
@@ -100,7 +100,6 @@ func (d *permissionsDao) updateDataByID(ctx context.Context, db *gorm.DB, table 
 	if table.Description != "" {
 		update["description"] = table.Description
 	}
-	
 
 	return db.WithContext(ctx).Model(table).Updates(update).Error
 }

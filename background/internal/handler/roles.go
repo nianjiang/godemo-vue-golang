@@ -232,7 +232,7 @@ func (h *rolesHandler) List(c *gin.Context) {
 
 	response.Success(c, gin.H{
 		"roless": data,
-		"total":        total,
+		"total":  total,
 	})
 }
 

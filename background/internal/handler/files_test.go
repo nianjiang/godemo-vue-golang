@@ -103,7 +103,7 @@ func Test_filesHandler_Create(t *testing.T) {
 	}
 
 	t.Logf("%+v", result)
-	
+
 }
 
 func Test_filesHandler_DeleteByID(t *testing.T) {
@@ -111,7 +111,6 @@ func Test_filesHandler_DeleteByID(t *testing.T) {
 	defer h.Close()
 	testData := h.TestData.(*model.Files)
 	expectedSQLForDeletion := "DELETE .*"
-	
 
 	h.MockDao.SQLMock.ExpectBegin()
 	h.MockDao.SQLMock.ExpectExec(expectedSQLForDeletion).

@@ -59,7 +59,6 @@ func Test_menusDao_DeleteByID(t *testing.T) {
 	defer d.Close()
 	testData := d.TestData.(*model.Menus)
 	expectedSQLForDeletion := "DELETE .*"
-	
 
 	d.SQLMock.ExpectBegin()
 	d.SQLMock.ExpectExec(expectedSQLForDeletion).
@@ -96,7 +95,7 @@ func Test_menusDao_UpdateByID(t *testing.T) {
 	// zero id error
 	err = d.IDao.(MenusDao).UpdateByID(d.Ctx, &model.Menus{})
 	assert.Error(t, err)
-	
+
 }
 
 func Test_menusDao_GetByID(t *testing.T) {
@@ -203,7 +202,6 @@ func Test_menusDao_DeleteByTx(t *testing.T) {
 	defer d.Close()
 	testData := d.TestData.(*model.Menus)
 	expectedSQLForDeletion := "DELETE .*"
-	
 
 	d.SQLMock.ExpectBegin()
 	d.SQLMock.ExpectExec(expectedSQLForDeletion).

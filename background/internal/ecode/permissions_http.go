@@ -7,7 +7,7 @@ import (
 // permissions business-level http error codes.
 // the permissionsNO value range is 1~999, if the same error code is used, it will cause panic.
 var (
-	permissionsNO = 68
+	permissionsNO       = 68
 	permissionsName     = "permissions"
 	permissionsBaseCode = errcode.HCode(permissionsNO)
 

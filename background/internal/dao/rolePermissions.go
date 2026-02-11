@@ -34,7 +34,7 @@ type RolePermissionsDao interface {
 type rolePermissionsDao struct {
 	db    *gorm.DB
 	cache cache.RolePermissionsCache // if nil, the cache is not used.
-	sfg   *singleflight.Group    // if cache is nil, the sfg is not used.
+	sfg   *singleflight.Group        // if cache is nil, the sfg is not used.
 }
 
 // NewRolePermissionsDao creating the dao interface
@@ -85,20 +85,18 @@ func (d *rolePermissionsDao) UpdateByRoleID(ctx context.Context, table *model.Ro
 }
 
 func (d *rolePermissionsDao) updateDataByRoleID(ctx context.Context, db *gorm.DB, table *model.RolePermissions) error {
-		if table.RoleID < 1 {
+	if table.RoleID < 1 {
 		return errors.New("roleID cannot be 0")
 	}
 
-
 	update := map[string]interface{}{}
-	
+
 	if table.RoleID != 0 {
 		update["role_id"] = table.RoleID
 	}
 	if table.PermissionID != 0 {
 		update["permission_id"] = table.PermissionID
 	}
-	
 
 	return db.WithContext(ctx).Model(table).Updates(update).Error
 }
@@ -121,7 +119,7 @@ func (d *rolePermissionsDao) GetByRoleID(ctx context.Context, roleID uint64) (*m
 	// get from database
 	if errors.Is(err, database.ErrCacheNotFound) {
 		// for the same roleID, prevent high concurrent simultaneous access to database
-				val, err, _ := d.sfg.Do(utils.Uint64ToStr(roleID), func() (interface{}, error) {
+		val, err, _ := d.sfg.Do(utils.Uint64ToStr(roleID), func() (interface{}, error) {
 
 			table := &model.RolePermissions{}
 			err = d.db.WithContext(ctx).Where("role_id = ?", roleID).First(table).Error

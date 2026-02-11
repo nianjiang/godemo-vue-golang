@@ -10,29 +10,28 @@ var _ time.Time
 
 // Tip: suggested filling in the binding rules https://github.com/go-playground/validator in request struct fields tag.
 
-
 // CreateUsersRequest request params
 type CreateUsersRequest struct {
-	UserName  string `json:"userName" binding:""`
-	Password  string `json:"password" binding:""`
-	UserGender  string `json:"userGender" binding:""`
-	NickName  string `json:"nickName" binding:""`
+	UserName   string `json:"userName" binding:""`
+	Password   string `json:"password" binding:""`
+	UserGender string `json:"userGender" binding:""`
+	NickName   string `json:"nickName" binding:""`
 	UserPhone  string `json:"userPhone" binding:""`
 	UserEmail  string `json:"userEmail" binding:""`
-	Status  string `json:"status" binding:""`
+	Status     string `json:"status" binding:""`
 }
 
 // UpdateUsersByIDRequest request params
 type UpdateUsersByIDRequest struct {
 	ID uint64 `json:"id" binding:""` // uint64 id
 
-	UserName  string `json:"userName" binding:""`
-	Password  string `json:"password" binding:""`
-	UserGender  string `json:"userGender" binding:""`
-	NickName  string `json:"nickName" binding:""`
+	UserName   string `json:"userName" binding:""`
+	Password   string `json:"password" binding:""`
+	UserGender string `json:"userGender" binding:""`
+	NickName   string `json:"nickName" binding:""`
 	UserPhone  string `json:"userPhone" binding:""`
 	UserEmail  string `json:"userEmail" binding:""`
-	Status  string `json:"status" binding:""`
+	Status     string `json:"status" binding:""`
 }
 
 // UsersObjDetail detail
@@ -41,15 +40,14 @@ type UsersObjDetail struct {
 
 	CreatedAt  *time.Time `json:"createdAt"`
 	UpdatedAt  *time.Time `json:"updatedAt"`
-	UserName  string `json:"userName"`
-	Password  string `json:"password"`
-	UserGender  string `json:"userGender"`
-	NickName  string `json:"nickName"`
-	UserPhone  string `json:"userPhone"`
-	UserEmail  string `json:"userEmail"`
-	Status  string `json:"status"`
+	UserName   string     `json:"userName"`
+	Password   string     `json:"password"`
+	UserGender string     `json:"userGender"`
+	NickName   string     `json:"nickName"`
+	UserPhone  string     `json:"userPhone"`
+	UserEmail  string     `json:"userEmail"`
+	Status     string     `json:"status"`
 }
-
 
 // CreateUsersReply only for api docs
 type CreateUsersReply struct {

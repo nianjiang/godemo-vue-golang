@@ -10,34 +10,32 @@ var _ time.Time
 
 // Tip: suggested filling in the binding rules https://github.com/go-playground/validator in request struct fields tag.
 
-
 // CreatePermissionsRequest request params
 type CreatePermissionsRequest struct {
-	Name  string `json:"name" binding:""`
-	Code  string `json:"code" binding:""`
-	Description  string `json:"description" binding:""`
+	Name        string `json:"name" binding:""`
+	Code        string `json:"code" binding:""`
+	Description string `json:"description" binding:""`
 }
 
 // UpdatePermissionsByIDRequest request params
 type UpdatePermissionsByIDRequest struct {
 	ID uint64 `json:"id" binding:""` // uint64 id
 
-	Name  string `json:"name" binding:""`
-	Code  string `json:"code" binding:""`
-	Description  string `json:"description" binding:""`
+	Name        string `json:"name" binding:""`
+	Code        string `json:"code" binding:""`
+	Description string `json:"description" binding:""`
 }
 
 // PermissionsObjDetail detail
 type PermissionsObjDetail struct {
 	ID uint64 `json:"id"` // convert to uint64 id
 
-	CreatedAt  *time.Time `json:"createdAt"`
-	UpdatedAt  *time.Time `json:"updatedAt"`
-	Name  string `json:"name"`
-	Code  string `json:"code"`
-	Description  string `json:"description"`
+	CreatedAt   *time.Time `json:"createdAt"`
+	UpdatedAt   *time.Time `json:"updatedAt"`
+	Name        string     `json:"name"`
+	Code        string     `json:"code"`
+	Description string     `json:"description"`
 }
-
 
 // CreatePermissionsReply only for api docs
 type CreatePermissionsReply struct {

@@ -10,5 +10,3 @@ var RolePermissionsColumnNames = map[string]bool{
 	"role_id":       true,
 	"permission_id": true,
 }
-
-

@@ -1,0 +1,1711 @@
+definitions:
+  types.Column:
+    properties:
+      exp:
+        description: expressions, which default to = when the value is null, have
+          =, !=, >, >=, <, <=, like
+        type: string
+      logic:
+        description: logical type, default value is "and", support &, and, ||, or
+        type: string
+      name:
+        description: column name
+        type: string
+      value:
+        description: column value
+    type: object
+  types.CreateFilesReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          id:
+            description: id
+            type: integer
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.CreateFilesRequest:
+    properties:
+      filename:
+        type: string
+      mimeType:
+        type: string
+      size:
+        type: integer
+      url:
+        type: string
+      userID:
+        type: integer
+    type: object
+  types.CreateMenusReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          id:
+            description: id
+            type: integer
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.CreateMenusRequest:
+    properties:
+      icon:
+        type: string
+      name:
+        type: string
+      order:
+        type: integer
+      parentID:
+        type: integer
+      path:
+        type: string
+    type: object
+  types.CreatePermissionsReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          id:
+            description: id
+            type: integer
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.CreatePermissionsRequest:
+    properties:
+      code:
+        type: string
+      description:
+        type: string
+      name:
+        type: string
+    type: object
+  types.CreateRolePermissionsReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          roleID:
+            type: integer
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.CreateRolePermissionsRequest:
+    properties:
+      permissionID:
+        type: integer
+      roleID:
+        type: integer
+    type: object
+  types.CreateRolesReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          id:
+            description: id
+            type: integer
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.CreateRolesRequest:
+    properties:
+      roleCode:
+        type: string
+      roleDesc:
+        type: string
+      roleName:
+        type: string
+      status:
+        type: string
+    type: object
+  types.CreateUserRolesReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          userID:
+            type: integer
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.CreateUserRolesRequest:
+    properties:
+      roleID:
+        type: integer
+      userID:
+        type: integer
+    type: object
+  types.CreateUsersReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          id:
+            description: id
+            type: integer
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.CreateUsersRequest:
+    properties:
+      nickName:
+        type: string
+      password:
+        type: string
+      status:
+        type: string
+      userEmail:
+        type: string
+      userGender:
+        type: string
+      userName:
+        type: string
+      userPhone:
+        type: string
+    type: object
+  types.DeleteFilesByIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.DeleteMenusByIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.DeletePermissionsByIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.DeleteRolePermissionsByRoleIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.DeleteRolesByIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.DeleteUserRolesByUserIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.DeleteUsersByIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.FilesObjDetail:
+    properties:
+      createdAt:
+        type: string
+      filename:
+        type: string
+      id:
+        description: convert to uint64 id
+        type: integer
+      mimeType:
+        type: string
+      size:
+        type: integer
+      updatedAt:
+        type: string
+      url:
+        type: string
+      userID:
+        type: integer
+    type: object
+  types.GetFilesByIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          files:
+            $ref: '#/definitions/types.FilesObjDetail'
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.GetMenusByIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          menus:
+            $ref: '#/definitions/types.MenusObjDetail'
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.GetPermissionsByIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          permissions:
+            $ref: '#/definitions/types.PermissionsObjDetail'
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.GetRolePermissionsByRoleIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          rolePermissions:
+            $ref: '#/definitions/types.RolePermissionsObjDetail'
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.GetRolesByIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          roles:
+            $ref: '#/definitions/types.RolesObjDetail'
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.GetUserRolesByUserIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          userRoles:
+            $ref: '#/definitions/types.UserRolesObjDetail'
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.GetUsersByIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          users:
+            $ref: '#/definitions/types.UsersObjDetail'
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.ListFilessReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          filess:
+            items:
+              $ref: '#/definitions/types.FilesObjDetail'
+            type: array
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.ListMenussReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          menuss:
+            items:
+              $ref: '#/definitions/types.MenusObjDetail'
+            type: array
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.ListPermissionssReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          permissionss:
+            items:
+              $ref: '#/definitions/types.PermissionsObjDetail'
+            type: array
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.ListRolePermissionsReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          rolePermissions:
+            items:
+              $ref: '#/definitions/types.RolePermissionsObjDetail'
+            type: array
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.ListRolessReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          roless:
+            items:
+              $ref: '#/definitions/types.RolesObjDetail'
+            type: array
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.ListUserRolesReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          userRoles:
+            items:
+              $ref: '#/definitions/types.UserRolesObjDetail'
+            type: array
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.ListUserssReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        properties:
+          userss:
+            items:
+              $ref: '#/definitions/types.UsersObjDetail'
+            type: array
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.MenusObjDetail:
+    properties:
+      createdAt:
+        type: string
+      icon:
+        type: string
+      id:
+        description: convert to uint64 id
+        type: integer
+      name:
+        type: string
+      order:
+        type: integer
+      parentID:
+        type: integer
+      path:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  types.Params:
+    properties:
+      columns:
+        description: query conditions
+        items:
+          $ref: '#/definitions/types.Column'
+        type: array
+      limit:
+        description: lines per page
+        type: integer
+      page:
+        description: page number, starting from page 0
+        type: integer
+      sort:
+        description: sorted fields, multi-column sorting separated by commas
+        type: string
+    type: object
+  types.PermissionsObjDetail:
+    properties:
+      code:
+        type: string
+      createdAt:
+        type: string
+      description:
+        type: string
+      id:
+        description: convert to uint64 id
+        type: integer
+      name:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  types.RolePermissionsObjDetail:
+    properties:
+      permissionID:
+        type: integer
+      roleID:
+        type: integer
+    type: object
+  types.RolesObjDetail:
+    properties:
+      createdAt:
+        type: string
+      id:
+        description: convert to uint64 id
+        type: integer
+      roleCode:
+        type: string
+      roleDesc:
+        type: string
+      roleName:
+        type: string
+      status:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  types.UpdateFilesByIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.UpdateFilesByIDRequest:
+    properties:
+      filename:
+        type: string
+      id:
+        description: uint64 id
+        type: integer
+      mimeType:
+        type: string
+      size:
+        type: integer
+      url:
+        type: string
+      userID:
+        type: integer
+    type: object
+  types.UpdateMenusByIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.UpdateMenusByIDRequest:
+    properties:
+      icon:
+        type: string
+      id:
+        description: uint64 id
+        type: integer
+      name:
+        type: string
+      order:
+        type: integer
+      parentID:
+        type: integer
+      path:
+        type: string
+    type: object
+  types.UpdatePermissionsByIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.UpdatePermissionsByIDRequest:
+    properties:
+      code:
+        type: string
+      description:
+        type: string
+      id:
+        description: uint64 id
+        type: integer
+      name:
+        type: string
+    type: object
+  types.UpdateRolePermissionsByRoleIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.UpdateRolePermissionsByRoleIDRequest:
+    properties:
+      permissionID:
+        type: integer
+      roleID:
+        type: integer
+    type: object
+  types.UpdateRolesByIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.UpdateRolesByIDRequest:
+    properties:
+      id:
+        description: uint64 id
+        type: integer
+      roleCode:
+        type: string
+      roleDesc:
+        type: string
+      roleName:
+        type: string
+      status:
+        type: string
+    type: object
+  types.UpdateUserRolesByUserIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.UpdateUserRolesByUserIDRequest:
+    properties:
+      roleID:
+        type: integer
+      userID:
+        type: integer
+    type: object
+  types.UpdateUsersByIDReply:
+    properties:
+      code:
+        description: return code
+        type: integer
+      data:
+        description: return data
+        type: object
+      msg:
+        description: return information description
+        type: string
+    type: object
+  types.UpdateUsersByIDRequest:
+    properties:
+      id:
+        description: uint64 id
+        type: integer
+      nickName:
+        type: string
+      password:
+        type: string
+      status:
+        type: string
+      userEmail:
+        type: string
+      userGender:
+        type: string
+      userName:
+        type: string
+      userPhone:
+        type: string
+    type: object
+  types.UserRolesObjDetail:
+    properties:
+      roleID:
+        type: integer
+      userID:
+        type: integer
+    type: object
+  types.UsersObjDetail:
+    properties:
+      createdAt:
+        type: string
+      id:
+        description: convert to uint64 id
+        type: integer
+      nickName:
+        type: string
+      password:
+        type: string
+      status:
+        type: string
+      updatedAt:
+        type: string
+      userEmail:
+        type: string
+      userGender:
+        type: string
+      userName:
+        type: string
+      userPhone:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: http server api docs
+  title: godemo api docs
+  version: v1.0.0
+paths:
+  /api/v1/files:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new files entity using the provided data in the request
+        body.
+      parameters:
+      - description: files information
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.CreateFilesRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.CreateFilesReply'
+      security:
+      - BearerAuth: []
+      summary: Create a new files
+      tags:
+      - files
+  /api/v1/files/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a existing files identified by the given id in the path.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.DeleteFilesByIDReply'
+      security:
+      - BearerAuth: []
+      summary: Delete a files by id
+      tags:
+      - files
+    get:
+      consumes:
+      - application/json
+      description: Gets detailed information of a files specified by the given id
+        in the path.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.GetFilesByIDReply'
+      security:
+      - BearerAuth: []
+      summary: Get a files by id
+      tags:
+      - files
+    put:
+      consumes:
+      - application/json
+      description: Updates the specified files by given id in the path, support partial
+        update.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: files information
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.UpdateFilesByIDRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.UpdateFilesByIDReply'
+      security:
+      - BearerAuth: []
+      summary: Update a files by id
+      tags:
+      - files
+  /api/v1/files/list:
+    post:
+      consumes:
+      - application/json
+      description: Returns a paginated list of files based on query filters, including
+        page number and size.
+      parameters:
+      - description: query parameters
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.Params'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.ListFilessReply'
+      security:
+      - BearerAuth: []
+      summary: Get a paginated list of filess by custom conditions
+      tags:
+      - files
+  /api/v1/menus:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new menus entity using the provided data in the request
+        body.
+      parameters:
+      - description: menus information
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.CreateMenusRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.CreateMenusReply'
+      security:
+      - BearerAuth: []
+      summary: Create a new menus
+      tags:
+      - menus
+  /api/v1/menus/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a existing menus identified by the given id in the path.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.DeleteMenusByIDReply'
+      security:
+      - BearerAuth: []
+      summary: Delete a menus by id
+      tags:
+      - menus
+    get:
+      consumes:
+      - application/json
+      description: Gets detailed information of a menus specified by the given id
+        in the path.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.GetMenusByIDReply'
+      security:
+      - BearerAuth: []
+      summary: Get a menus by id
+      tags:
+      - menus
+    put:
+      consumes:
+      - application/json
+      description: Updates the specified menus by given id in the path, support partial
+        update.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: menus information
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.UpdateMenusByIDRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.UpdateMenusByIDReply'
+      security:
+      - BearerAuth: []
+      summary: Update a menus by id
+      tags:
+      - menus
+  /api/v1/menus/list:
+    post:
+      consumes:
+      - application/json
+      description: Returns a paginated list of menus based on query filters, including
+        page number and size.
+      parameters:
+      - description: query parameters
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.Params'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.ListMenussReply'
+      security:
+      - BearerAuth: []
+      summary: Get a paginated list of menuss by custom conditions
+      tags:
+      - menus
+  /api/v1/permissions:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new permissions entity using the provided data in the
+        request body.
+      parameters:
+      - description: permissions information
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.CreatePermissionsRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.CreatePermissionsReply'
+      security:
+      - BearerAuth: []
+      summary: Create a new permissions
+      tags:
+      - permissions
+  /api/v1/permissions/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a existing permissions identified by the given id in the
+        path.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.DeletePermissionsByIDReply'
+      security:
+      - BearerAuth: []
+      summary: Delete a permissions by id
+      tags:
+      - permissions
+    get:
+      consumes:
+      - application/json
+      description: Gets detailed information of a permissions specified by the given
+        id in the path.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.GetPermissionsByIDReply'
+      security:
+      - BearerAuth: []
+      summary: Get a permissions by id
+      tags:
+      - permissions
+    put:
+      consumes:
+      - application/json
+      description: Updates the specified permissions by given id in the path, support
+        partial update.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: permissions information
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.UpdatePermissionsByIDRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.UpdatePermissionsByIDReply'
+      security:
+      - BearerAuth: []
+      summary: Update a permissions by id
+      tags:
+      - permissions
+  /api/v1/permissions/list:
+    post:
+      consumes:
+      - application/json
+      description: Returns a paginated list of permissions based on query filters,
+        including page number and size.
+      parameters:
+      - description: query parameters
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.Params'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.ListPermissionssReply'
+      security:
+      - BearerAuth: []
+      summary: Get a paginated list of permissionss by custom conditions
+      tags:
+      - permissions
+  /api/v1/rolePermissions:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new rolePermissions entity using the provided data in
+        the request body.
+      parameters:
+      - description: rolePermissions information
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.CreateRolePermissionsRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.CreateRolePermissionsReply'
+      security:
+      - BearerAuth: []
+      summary: Create a new rolePermissions
+      tags:
+      - rolePermissions
+  /api/v1/rolePermissions/{roleID}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a existing rolePermissions identified by the given roleID
+        in the path.
+      parameters:
+      - description: roleID
+        in: path
+        name: roleID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.DeleteRolePermissionsByRoleIDReply'
+      security:
+      - BearerAuth: []
+      summary: Delete a rolePermissions by roleID
+      tags:
+      - rolePermissions
+    get:
+      consumes:
+      - application/json
+      description: Gets detailed information of a rolePermissions specified by the
+        given roleID in the path.
+      parameters:
+      - description: roleID
+        in: path
+        name: roleID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.GetRolePermissionsByRoleIDReply'
+      security:
+      - BearerAuth: []
+      summary: Get a rolePermissions by roleID
+      tags:
+      - rolePermissions
+    put:
+      consumes:
+      - application/json
+      description: Updates the specified rolePermissions by given roleID in the path,
+        support partial update.
+      parameters:
+      - description: roleID
+        in: path
+        name: roleID
+        required: true
+        type: string
+      - description: rolePermissions information
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.UpdateRolePermissionsByRoleIDRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.UpdateRolePermissionsByRoleIDReply'
+      security:
+      - BearerAuth: []
+      summary: Update a rolePermissions by roleID
+      tags:
+      - rolePermissions
+  /api/v1/rolePermissions/list:
+    post:
+      consumes:
+      - application/json
+      description: Returns a paginated list of rolePermissions based on query filters,
+        including page number and size.
+      parameters:
+      - description: query parameters
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.Params'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.ListRolePermissionsReply'
+      security:
+      - BearerAuth: []
+      summary: Get a paginated list of rolePermissions by custom conditions
+      tags:
+      - rolePermissions
+  /api/v1/roles:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new roles entity using the provided data in the request
+        body.
+      parameters:
+      - description: roles information
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.CreateRolesRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.CreateRolesReply'
+      security:
+      - BearerAuth: []
+      summary: Create a new roles
+      tags:
+      - roles
+  /api/v1/roles/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a existing roles identified by the given id in the path.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.DeleteRolesByIDReply'
+      security:
+      - BearerAuth: []
+      summary: Delete a roles by id
+      tags:
+      - roles
+    get:
+      consumes:
+      - application/json
+      description: Gets detailed information of a roles specified by the given id
+        in the path.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.GetRolesByIDReply'
+      security:
+      - BearerAuth: []
+      summary: Get a roles by id
+      tags:
+      - roles
+    put:
+      consumes:
+      - application/json
+      description: Updates the specified roles by given id in the path, support partial
+        update.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: roles information
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.UpdateRolesByIDRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.UpdateRolesByIDReply'
+      security:
+      - BearerAuth: []
+      summary: Update a roles by id
+      tags:
+      - roles
+  /api/v1/roles/list:
+    post:
+      consumes:
+      - application/json
+      description: Returns a paginated list of roles based on query filters, including
+        page number and size.
+      parameters:
+      - description: query parameters
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.Params'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.ListRolessReply'
+      security:
+      - BearerAuth: []
+      summary: Get a paginated list of roless by custom conditions
+      tags:
+      - roles
+  /api/v1/userRoles:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new userRoles entity using the provided data in the request
+        body.
+      parameters:
+      - description: userRoles information
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.CreateUserRolesRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.CreateUserRolesReply'
+      security:
+      - BearerAuth: []
+      summary: Create a new userRoles
+      tags:
+      - userRoles
+  /api/v1/userRoles/{userID}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a existing userRoles identified by the given userID in
+        the path.
+      parameters:
+      - description: userID
+        in: path
+        name: userID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.DeleteUserRolesByUserIDReply'
+      security:
+      - BearerAuth: []
+      summary: Delete a userRoles by userID
+      tags:
+      - userRoles
+    get:
+      consumes:
+      - application/json
+      description: Gets detailed information of a userRoles specified by the given
+        userID in the path.
+      parameters:
+      - description: userID
+        in: path
+        name: userID
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.GetUserRolesByUserIDReply'
+      security:
+      - BearerAuth: []
+      summary: Get a userRoles by userID
+      tags:
+      - userRoles
+    put:
+      consumes:
+      - application/json
+      description: Updates the specified userRoles by given userID in the path, support
+        partial update.
+      parameters:
+      - description: userID
+        in: path
+        name: userID
+        required: true
+        type: string
+      - description: userRoles information
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.UpdateUserRolesByUserIDRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.UpdateUserRolesByUserIDReply'
+      security:
+      - BearerAuth: []
+      summary: Update a userRoles by userID
+      tags:
+      - userRoles
+  /api/v1/userRoles/list:
+    post:
+      consumes:
+      - application/json
+      description: Returns a paginated list of userRoles based on query filters, including
+        page number and size.
+      parameters:
+      - description: query parameters
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.Params'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.ListUserRolesReply'
+      security:
+      - BearerAuth: []
+      summary: Get a paginated list of userRoles by custom conditions
+      tags:
+      - userRoles
+  /api/v1/users:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new users entity using the provided data in the request
+        body.
+      parameters:
+      - description: users information
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.CreateUsersRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.CreateUsersReply'
+      security:
+      - BearerAuth: []
+      summary: Create a new users
+      tags:
+      - users
+  /api/v1/users/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes a existing users identified by the given id in the path.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.DeleteUsersByIDReply'
+      security:
+      - BearerAuth: []
+      summary: Delete a users by id
+      tags:
+      - users
+    get:
+      consumes:
+      - application/json
+      description: Gets detailed information of a users specified by the given id
+        in the path.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.GetUsersByIDReply'
+      security:
+      - BearerAuth: []
+      summary: Get a users by id
+      tags:
+      - users
+    put:
+      consumes:
+      - application/json
+      description: Updates the specified users by given id in the path, support partial
+        update.
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: users information
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.UpdateUsersByIDRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.UpdateUsersByIDReply'
+      security:
+      - BearerAuth: []
+      summary: Update a users by id
+      tags:
+      - users
+  /api/v1/users/list:
+    post:
+      consumes:
+      - application/json
+      description: Returns a paginated list of users based on query filters, including
+        page number and size.
+      parameters:
+      - description: query parameters
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/types.Params'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/types.ListUserssReply'
+      security:
+      - BearerAuth: []
+      summary: Get a paginated list of userss by custom conditions
+      tags:
+      - users
+schemes:
+- http
+- https
+securityDefinitions:
+  BearerAuth:
+    description: Type Bearer your-jwt-token to Value
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

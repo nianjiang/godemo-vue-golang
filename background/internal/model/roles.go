@@ -26,5 +26,3 @@ var RolesColumnNames = map[string]bool{
 	"role_desc":  true,
 	"status":     true,
 }
-
-

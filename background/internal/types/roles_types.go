@@ -10,37 +10,35 @@ var _ time.Time
 
 // Tip: suggested filling in the binding rules https://github.com/go-playground/validator in request struct fields tag.
 
-
 // CreateRolesRequest request params
 type CreateRolesRequest struct {
-	RoleName  string `json:"roleName" binding:""`
-	RoleCode  string `json:"roleCode" binding:""`
-	RoleDesc  string `json:"roleDesc" binding:""`
-	Status  string `json:"status" binding:""`
+	RoleName string `json:"roleName" binding:""`
+	RoleCode string `json:"roleCode" binding:""`
+	RoleDesc string `json:"roleDesc" binding:""`
+	Status   string `json:"status" binding:""`
 }
 
 // UpdateRolesByIDRequest request params
 type UpdateRolesByIDRequest struct {
 	ID uint64 `json:"id" binding:""` // uint64 id
 
-	RoleName  string `json:"roleName" binding:""`
-	RoleCode  string `json:"roleCode" binding:""`
-	RoleDesc  string `json:"roleDesc" binding:""`
-	Status  string `json:"status" binding:""`
+	RoleName string `json:"roleName" binding:""`
+	RoleCode string `json:"roleCode" binding:""`
+	RoleDesc string `json:"roleDesc" binding:""`
+	Status   string `json:"status" binding:""`
 }
 
 // RolesObjDetail detail
 type RolesObjDetail struct {
 	ID uint64 `json:"id"` // convert to uint64 id
 
-	CreatedAt  *time.Time `json:"createdAt"`
-	UpdatedAt  *time.Time `json:"updatedAt"`
-	RoleName  string `json:"roleName"`
-	RoleCode  string `json:"roleCode"`
-	RoleDesc  string `json:"roleDesc"`
-	Status  string `json:"status"`
+	CreatedAt *time.Time `json:"createdAt"`
+	UpdatedAt *time.Time `json:"updatedAt"`
+	RoleName  string     `json:"roleName"`
+	RoleCode  string     `json:"roleCode"`
+	RoleDesc  string     `json:"roleDesc"`
+	Status    string     `json:"status"`
 }
-
 
 // CreateRolesReply only for api docs
 type CreateRolesReply struct {

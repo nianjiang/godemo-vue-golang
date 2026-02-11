@@ -23,7 +23,7 @@ const docTemplate = `{
                         "BearerAuth": []
                     }
                 ],
-                "description": "submit information to create files",
+                "description": "Creates a new files entity using the provided data in the request body.",
                 "consumes": [
                     "application/json"
                 ],
@@ -33,7 +33,7 @@ const docTemplate = `{
                 "tags": [
                     "files"
                 ],
-                "summary": "create files",
+                "summary": "Create a new files",
                 "parameters": [
                     {
                         "description": "files information",
@@ -62,7 +62,7 @@ const docTemplate = `{
                         "BearerAuth": []
                     }
                 ],
-                "description": "list of filess by paging and conditions",
+                "description": "Returns a paginated list of files based on query filters, including page number and size.",
                 "consumes": [
                     "application/json"
                 ],
@@ -72,7 +72,7 @@ const docTemplate = `{
                 "tags": [
                     "files"
                 ],
-                "summary": "list of filess by query parameters",
+                "summary": "Get a paginated list of filess by custom conditions",
                 "parameters": [
                     {
                         "description": "query parameters",
@@ -80,7 +80,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/github_com_go-dev-frame_sponge_internal_types.Params"
+                            "$ref": "#/definitions/types.Params"
                         }
                     }
                 ],
@@ -101,7 +101,7 @@ const docTemplate = `{
                         "BearerAuth": []
                     }
                 ],
-                "description": "get files detail by id",
+                "description": "Gets detailed information of a files specified by the given id in the path.",
                 "consumes": [
                     "application/json"
                 ],
@@ -111,7 +111,7 @@ const docTemplate = `{
                 "tags": [
                     "files"
                 ],
-                "summary": "get files detail",
+                "summary": "Get a files by id",
                 "parameters": [
                     {
                         "type": "string",
@@ -136,7 +136,7 @@ const docTemplate = `{
                         "BearerAuth": []
                     }
                 ],
-                "description": "update files information by id",
+                "description": "Updates the specified files by given id in the path, support partial update.",
                 "consumes": [
                     "application/json"
                 ],
@@ -146,7 +146,7 @@ const docTemplate = `{
                 "tags": [
                     "files"
                 ],
-                "summary": "update files",
+                "summary": "Update a files by id",
                 "parameters": [
                     {
                         "type": "string",
@@ -180,7 +180,7 @@ const docTemplate = `{
                         "BearerAuth": []
                     }
                 ],
-                "description": "delete files by id",
+                "description": "Deletes a existing files identified by the given id in the path.",
                 "consumes": [
                     "application/json"
                 ],
@@ -190,7 +190,7 @@ const docTemplate = `{
                 "tags": [
                     "files"
                 ],
-                "summary": "delete files",
+                "summary": "Delete a files by id",
                 "parameters": [
                     {
                         "type": "string",
@@ -210,9 +210,14 @@ const docTemplate = `{
                 }
             }
         },
-        "/codes": {
-            "get": {
-                "description": "Returns a list of all defined HTTP error codes and their descriptions",
+        "/api/v1/menus": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Creates a new menus entity using the provided data in the request body.",
                 "consumes": [
                     "application/json"
                 ],
@@ -220,25 +225,38 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "system"
+                    "menus"
                 ],
-                "summary": "list all error codes",
+                "summary": "Create a new menus",
+                "parameters": [
+                    {
+                        "description": "menus information",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.CreateMenusRequest"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "List of error codes",
+                        "description": "OK",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/errcode.ErrInfo"
-                            }
+                            "$ref": "#/definitions/types.CreateMenusReply"
                         }
                     }
                 }
             }
         },
-        "/config": {
-            "get": {
-                "description": "Returns the current system configuration in JSON format. This includes all runtime configuration parameters.",
+        "/api/v1/menus/list": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Returns a paginated list of menus based on query filters, including page number and size.",
                 "consumes": [
                     "application/json"
                 ],
@@ -246,23 +264,38 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "system"
+                    "menus"
                 ],
-                "summary": "get system configuration",
+                "summary": "Get a paginated list of menuss by custom conditions",
+                "parameters": [
+                    {
+                        "description": "query parameters",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.Params"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "Returns the complete system configuration",
+                        "description": "OK",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": true
+                            "$ref": "#/definitions/types.ListMenussReply"
                         }
                     }
                 }
             }
         },
-        "/health": {
+        "/api/v1/menus/{id}": {
             "get": {
-                "description": "Returns system health information including status and hostname",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Gets detailed information of a menus specified by the given id in the path.",
                 "consumes": [
                     "application/json"
                 ],
@@ -270,22 +303,115 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "system"
+                    "menus"
                 ],
-                "summary": "check system health status",
+                "summary": "Get a menus by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "Returns health status information",
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/handlerfunc.CheckHealthReply"
+                            "$ref": "#/definitions/types.GetMenusByIDReply"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Updates the specified menus by given id in the path, support partial update.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "menus"
+                ],
+                "summary": "Update a menus by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "menus information",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.UpdateMenusByIDRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.UpdateMenusByIDReply"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Deletes a existing menus identified by the given id in the path.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "menus"
+                ],
+                "summary": "Delete a menus by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.DeleteMenusByIDReply"
                         }
                     }
                 }
             }
         },
-        "/ping": {
-            "get": {
-                "description": "Simple ping endpoint to check if server is responsive",
+        "/api/v1/permissions": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Creates a new permissions entity using the provided data in the request body.",
                 "consumes": [
                     "application/json"
                 ],
@@ -293,14 +419,956 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "system"
+                    "permissions"
                 ],
-                "summary": "ping the server",
+                "summary": "Create a new permissions",
+                "parameters": [
+                    {
+                        "description": "permissions information",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.CreatePermissionsRequest"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "Returns empty JSON object",
+                        "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/handlerfunc.PingReply"
+                            "$ref": "#/definitions/types.CreatePermissionsReply"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/permissions/list": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Returns a paginated list of permissions based on query filters, including page number and size.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "permissions"
+                ],
+                "summary": "Get a paginated list of permissionss by custom conditions",
+                "parameters": [
+                    {
+                        "description": "query parameters",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.Params"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.ListPermissionssReply"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/permissions/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Gets detailed information of a permissions specified by the given id in the path.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "permissions"
+                ],
+                "summary": "Get a permissions by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.GetPermissionsByIDReply"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Updates the specified permissions by given id in the path, support partial update.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "permissions"
+                ],
+                "summary": "Update a permissions by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "permissions information",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.UpdatePermissionsByIDRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.UpdatePermissionsByIDReply"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Deletes a existing permissions identified by the given id in the path.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "permissions"
+                ],
+                "summary": "Delete a permissions by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.DeletePermissionsByIDReply"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/rolePermissions": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Creates a new rolePermissions entity using the provided data in the request body.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "rolePermissions"
+                ],
+                "summary": "Create a new rolePermissions",
+                "parameters": [
+                    {
+                        "description": "rolePermissions information",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.CreateRolePermissionsRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.CreateRolePermissionsReply"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/rolePermissions/list": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Returns a paginated list of rolePermissions based on query filters, including page number and size.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "rolePermissions"
+                ],
+                "summary": "Get a paginated list of rolePermissions by custom conditions",
+                "parameters": [
+                    {
+                        "description": "query parameters",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.Params"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.ListRolePermissionsReply"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/rolePermissions/{roleID}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Gets detailed information of a rolePermissions specified by the given roleID in the path.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "rolePermissions"
+                ],
+                "summary": "Get a rolePermissions by roleID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "roleID",
+                        "name": "roleID",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.GetRolePermissionsByRoleIDReply"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Updates the specified rolePermissions by given roleID in the path, support partial update.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "rolePermissions"
+                ],
+                "summary": "Update a rolePermissions by roleID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "roleID",
+                        "name": "roleID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "rolePermissions information",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.UpdateRolePermissionsByRoleIDRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.UpdateRolePermissionsByRoleIDReply"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Deletes a existing rolePermissions identified by the given roleID in the path.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "rolePermissions"
+                ],
+                "summary": "Delete a rolePermissions by roleID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "roleID",
+                        "name": "roleID",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.DeleteRolePermissionsByRoleIDReply"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/roles": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Creates a new roles entity using the provided data in the request body.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "roles"
+                ],
+                "summary": "Create a new roles",
+                "parameters": [
+                    {
+                        "description": "roles information",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.CreateRolesRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.CreateRolesReply"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/roles/list": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Returns a paginated list of roles based on query filters, including page number and size.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "roles"
+                ],
+                "summary": "Get a paginated list of roless by custom conditions",
+                "parameters": [
+                    {
+                        "description": "query parameters",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.Params"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.ListRolessReply"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/roles/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Gets detailed information of a roles specified by the given id in the path.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "roles"
+                ],
+                "summary": "Get a roles by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.GetRolesByIDReply"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Updates the specified roles by given id in the path, support partial update.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "roles"
+                ],
+                "summary": "Update a roles by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "roles information",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.UpdateRolesByIDRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.UpdateRolesByIDReply"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Deletes a existing roles identified by the given id in the path.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "roles"
+                ],
+                "summary": "Delete a roles by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.DeleteRolesByIDReply"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/userRoles": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Creates a new userRoles entity using the provided data in the request body.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "userRoles"
+                ],
+                "summary": "Create a new userRoles",
+                "parameters": [
+                    {
+                        "description": "userRoles information",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.CreateUserRolesRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.CreateUserRolesReply"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/userRoles/list": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Returns a paginated list of userRoles based on query filters, including page number and size.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "userRoles"
+                ],
+                "summary": "Get a paginated list of userRoles by custom conditions",
+                "parameters": [
+                    {
+                        "description": "query parameters",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.Params"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.ListUserRolesReply"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/userRoles/{userID}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Gets detailed information of a userRoles specified by the given userID in the path.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "userRoles"
+                ],
+                "summary": "Get a userRoles by userID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "userID",
+                        "name": "userID",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.GetUserRolesByUserIDReply"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Updates the specified userRoles by given userID in the path, support partial update.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "userRoles"
+                ],
+                "summary": "Update a userRoles by userID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "userID",
+                        "name": "userID",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "userRoles information",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.UpdateUserRolesByUserIDRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.UpdateUserRolesByUserIDReply"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Deletes a existing userRoles identified by the given userID in the path.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "userRoles"
+                ],
+                "summary": "Delete a userRoles by userID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "userID",
+                        "name": "userID",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.DeleteUserRolesByUserIDReply"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Creates a new users entity using the provided data in the request body.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "users"
+                ],
+                "summary": "Create a new users",
+                "parameters": [
+                    {
+                        "description": "users information",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.CreateUsersRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.CreateUsersReply"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/list": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Returns a paginated list of users based on query filters, including page number and size.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "users"
+                ],
+                "summary": "Get a paginated list of userss by custom conditions",
+                "parameters": [
+                    {
+                        "description": "query parameters",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.Params"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.ListUserssReply"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/users/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Gets detailed information of a users specified by the given id in the path.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "users"
+                ],
+                "summary": "Get a users by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.GetUsersByIDReply"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Updates the specified users by given id in the path, support partial update.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "users"
+                ],
+                "summary": "Update a users by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "users information",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.UpdateUsersByIDRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.UpdateUsersByIDReply"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Deletes a existing users identified by the given id in the path.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "users"
+                ],
+                "summary": "Delete a users by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.DeleteUsersByIDReply"
                         }
                     }
                 }
@@ -308,18 +1376,7 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "errcode.ErrInfo": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "integer"
-                },
-                "msg": {
-                    "type": "string"
-                }
-            }
-        },
-        "github_com_go-dev-frame_sponge_internal_types.Column": {
+        "types.Column": {
             "type": "object",
             "properties": {
                 "exp": {
@@ -338,44 +1395,6 @@ const docTemplate = `{
                     "description": "column value"
                 }
             }
-        },
-        "github_com_go-dev-frame_sponge_internal_types.Params": {
-            "type": "object",
-            "properties": {
-                "columns": {
-                    "description": "query conditions",
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/github_com_go-dev-frame_sponge_internal_types.Column"
-                    }
-                },
-                "limit": {
-                    "description": "lines per page",
-                    "type": "integer"
-                },
-                "page": {
-                    "description": "page number, starting from page 0",
-                    "type": "integer"
-                },
-                "sort": {
-                    "description": "sorted fields, multi-column sorting separated by commas",
-                    "type": "string"
-                }
-            }
-        },
-        "handlerfunc.CheckHealthReply": {
-            "type": "object",
-            "properties": {
-                "hostname": {
-                    "type": "string"
-                },
-                "status": {
-                    "type": "string"
-                }
-            }
-        },
-        "handlerfunc.PingReply": {
-            "type": "object"
         },
         "types.CreateFilesReply": {
             "type": "object",
@@ -403,36 +1422,254 @@ const docTemplate = `{
         "types.CreateFilesRequest": {
             "type": "object",
             "properties": {
-                "age": {
-                    "description": "age",
+                "filename": {
+                    "type": "string"
+                },
+                "mimeType": {
+                    "type": "string"
+                },
+                "size": {
                     "type": "integer"
                 },
-                "avatar": {
-                    "description": "avatar",
-                    "type": "string",
-                    "minLength": 5
-                },
-                "email": {
-                    "description": "email",
+                "url": {
                     "type": "string"
                 },
-                "gender": {
-                    "description": "gender, 1:Male, 2:Female, other values:unknown",
-                    "type": "integer",
-                    "maximum": 2,
-                    "minimum": 0
+                "userID": {
+                    "type": "integer"
+                }
+            }
+        },
+        "types.CreateMenusReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "description": "id",
+                            "type": "integer"
+                        }
+                    }
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.CreateMenusRequest": {
+            "type": "object",
+            "properties": {
+                "icon": {
+                    "type": "string"
                 },
                 "name": {
-                    "description": "username",
-                    "type": "string",
-                    "minLength": 2
-                },
-                "password": {
-                    "description": "password",
                     "type": "string"
                 },
-                "phone": {
-                    "description": "phone number, e164 rules, e.g. +8612345678901",
+                "order": {
+                    "type": "integer"
+                },
+                "parentID": {
+                    "type": "integer"
+                },
+                "path": {
+                    "type": "string"
+                }
+            }
+        },
+        "types.CreatePermissionsReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "description": "id",
+                            "type": "integer"
+                        }
+                    }
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.CreatePermissionsRequest": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "types.CreateRolePermissionsReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object",
+                    "properties": {
+                        "roleID": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.CreateRolePermissionsRequest": {
+            "type": "object",
+            "properties": {
+                "permissionID": {
+                    "type": "integer"
+                },
+                "roleID": {
+                    "type": "integer"
+                }
+            }
+        },
+        "types.CreateRolesReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "description": "id",
+                            "type": "integer"
+                        }
+                    }
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.CreateRolesRequest": {
+            "type": "object",
+            "properties": {
+                "roleCode": {
+                    "type": "string"
+                },
+                "roleDesc": {
+                    "type": "string"
+                },
+                "roleName": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "types.CreateUserRolesReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object",
+                    "properties": {
+                        "userID": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.CreateUserRolesRequest": {
+            "type": "object",
+            "properties": {
+                "roleID": {
+                    "type": "integer"
+                },
+                "userID": {
+                    "type": "integer"
+                }
+            }
+        },
+        "types.CreateUsersReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "description": "id",
+                            "type": "integer"
+                        }
+                    }
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.CreateUsersRequest": {
+            "type": "object",
+            "properties": {
+                "nickName": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "userEmail": {
+                    "type": "string"
+                },
+                "userGender": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string"
+                },
+                "userPhone": {
                     "type": "string"
                 }
             }
@@ -445,11 +1682,144 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "data": {
-                    "description": "return data"
+                    "description": "return data",
+                    "type": "object"
                 },
                 "msg": {
                     "description": "return information description",
                     "type": "string"
+                }
+            }
+        },
+        "types.DeleteMenusByIDReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object"
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.DeletePermissionsByIDReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object"
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.DeleteRolePermissionsByRoleIDReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object"
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.DeleteRolesByIDReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object"
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.DeleteUserRolesByUserIDReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object"
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.DeleteUsersByIDReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object"
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.FilesObjDetail": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "filename": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "convert to uint64 id",
+                    "type": "integer"
+                },
+                "mimeType": {
+                    "type": "string"
+                },
+                "size": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "userID": {
+                    "type": "integer"
                 }
             }
         },
@@ -466,6 +1836,138 @@ const docTemplate = `{
                     "properties": {
                         "files": {
                             "$ref": "#/definitions/types.FilesObjDetail"
+                        }
+                    }
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.GetMenusByIDReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object",
+                    "properties": {
+                        "menus": {
+                            "$ref": "#/definitions/types.MenusObjDetail"
+                        }
+                    }
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.GetPermissionsByIDReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object",
+                    "properties": {
+                        "permissions": {
+                            "$ref": "#/definitions/types.PermissionsObjDetail"
+                        }
+                    }
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.GetRolePermissionsByRoleIDReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object",
+                    "properties": {
+                        "rolePermissions": {
+                            "$ref": "#/definitions/types.RolePermissionsObjDetail"
+                        }
+                    }
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.GetRolesByIDReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object",
+                    "properties": {
+                        "roles": {
+                            "$ref": "#/definitions/types.RolesObjDetail"
+                        }
+                    }
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.GetUserRolesByUserIDReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object",
+                    "properties": {
+                        "userRoles": {
+                            "$ref": "#/definitions/types.UserRolesObjDetail"
+                        }
+                    }
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.GetUsersByIDReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object",
+                    "properties": {
+                        "users": {
+                            "$ref": "#/definitions/types.UsersObjDetail"
                         }
                     }
                 },
@@ -500,6 +2002,272 @@ const docTemplate = `{
                 }
             }
         },
+        "types.ListMenussReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object",
+                    "properties": {
+                        "menuss": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/types.MenusObjDetail"
+                            }
+                        }
+                    }
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.ListPermissionssReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object",
+                    "properties": {
+                        "permissionss": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/types.PermissionsObjDetail"
+                            }
+                        }
+                    }
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.ListRolePermissionsReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object",
+                    "properties": {
+                        "rolePermissions": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/types.RolePermissionsObjDetail"
+                            }
+                        }
+                    }
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.ListRolessReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object",
+                    "properties": {
+                        "roless": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/types.RolesObjDetail"
+                            }
+                        }
+                    }
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.ListUserRolesReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object",
+                    "properties": {
+                        "userRoles": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/types.UserRolesObjDetail"
+                            }
+                        }
+                    }
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.ListUserssReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object",
+                    "properties": {
+                        "userss": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/types.UsersObjDetail"
+                            }
+                        }
+                    }
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.MenusObjDetail": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "convert to uint64 id",
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "order": {
+                    "type": "integer"
+                },
+                "parentID": {
+                    "type": "integer"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "types.Params": {
+            "type": "object",
+            "properties": {
+                "columns": {
+                    "description": "query conditions",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/types.Column"
+                    }
+                },
+                "limit": {
+                    "description": "lines per page",
+                    "type": "integer"
+                },
+                "page": {
+                    "description": "page number, starting from page 0",
+                    "type": "integer"
+                },
+                "sort": {
+                    "description": "sorted fields, multi-column sorting separated by commas",
+                    "type": "string"
+                }
+            }
+        },
+        "types.PermissionsObjDetail": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "convert to uint64 id",
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        },
+        "types.RolePermissionsObjDetail": {
+            "type": "object",
+            "properties": {
+                "permissionID": {
+                    "type": "integer"
+                },
+                "roleID": {
+                    "type": "integer"
+                }
+            }
+        },
+        "types.RolesObjDetail": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "convert to uint64 id",
+                    "type": "integer"
+                },
+                "roleCode": {
+                    "type": "string"
+                },
+                "roleDesc": {
+                    "type": "string"
+                },
+                "roleName": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        },
         "types.UpdateFilesByIDReply": {
             "type": "object",
             "properties": {
@@ -508,7 +2276,8 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "data": {
-                    "description": "return data"
+                    "description": "return data",
+                    "type": "object"
                 },
                 "msg": {
                     "description": "return information description",
@@ -519,85 +2288,287 @@ const docTemplate = `{
         "types.UpdateFilesByIDRequest": {
             "type": "object",
             "properties": {
-                "age": {
-                    "description": "age",
-                    "type": "integer"
-                },
-                "avatar": {
-                    "description": "avatar",
+                "filename": {
                     "type": "string"
-                },
-                "email": {
-                    "description": "email",
-                    "type": "string"
-                },
-                "gender": {
-                    "description": "gender, 1:Male, 2:Female, other values:unknown",
-                    "type": "integer"
                 },
                 "id": {
-                    "description": "id",
+                    "description": "uint64 id",
                     "type": "integer"
                 },
-                "name": {
-                    "description": "username",
+                "mimeType": {
                     "type": "string"
                 },
-                "password": {
-                    "description": "password",
+                "size": {
+                    "type": "integer"
+                },
+                "url": {
                     "type": "string"
                 },
-                "phone": {
-                    "description": "phone number",
+                "userID": {
+                    "type": "integer"
+                }
+            }
+        },
+        "types.UpdateMenusByIDReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object"
+                },
+                "msg": {
+                    "description": "return information description",
                     "type": "string"
                 }
             }
         },
-        "types.FilesObjDetail": {
+        "types.UpdateMenusByIDRequest": {
             "type": "object",
             "properties": {
-                "age": {
-                    "description": "age",
-                    "type": "integer"
-                },
-                "avatar": {
-                    "description": "avatar",
+                "icon": {
                     "type": "string"
-                },
-                "createdAt": {
-                    "description": "create time",
-                    "type": "string"
-                },
-                "email": {
-                    "description": "email",
-                    "type": "string"
-                },
-                "gender": {
-                    "description": "gender, 1:Male, 2:Female, other values:unknown",
-                    "type": "integer"
                 },
                 "id": {
-                    "description": "id",
-                    "type": "integer"
-                },
-                "loginAt": {
-                    "description": "login timestamp",
+                    "description": "uint64 id",
                     "type": "integer"
                 },
                 "name": {
-                    "description": "username",
                     "type": "string"
                 },
-                "phone": {
-                    "description": "phone number",
+                "order": {
+                    "type": "integer"
+                },
+                "parentID": {
+                    "type": "integer"
+                },
+                "path": {
+                    "type": "string"
+                }
+            }
+        },
+        "types.UpdatePermissionsByIDReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object"
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.UpdatePermissionsByIDRequest": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "uint64 id",
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "types.UpdateRolePermissionsByRoleIDReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object"
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.UpdateRolePermissionsByRoleIDRequest": {
+            "type": "object",
+            "properties": {
+                "permissionID": {
+                    "type": "integer"
+                },
+                "roleID": {
+                    "type": "integer"
+                }
+            }
+        },
+        "types.UpdateRolesByIDReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object"
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.UpdateRolesByIDRequest": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "uint64 id",
+                    "type": "integer"
+                },
+                "roleCode": {
+                    "type": "string"
+                },
+                "roleDesc": {
+                    "type": "string"
+                },
+                "roleName": {
                     "type": "string"
                 },
                 "status": {
-                    "description": "account status, 1:inactive, 2:activated, 3:blocked",
+                    "type": "string"
+                }
+            }
+        },
+        "types.UpdateUserRolesByUserIDReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
                     "type": "integer"
                 },
+                "data": {
+                    "description": "return data",
+                    "type": "object"
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.UpdateUserRolesByUserIDRequest": {
+            "type": "object",
+            "properties": {
+                "roleID": {
+                    "type": "integer"
+                },
+                "userID": {
+                    "type": "integer"
+                }
+            }
+        },
+        "types.UpdateUsersByIDReply": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "return code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object"
+                },
+                "msg": {
+                    "description": "return information description",
+                    "type": "string"
+                }
+            }
+        },
+        "types.UpdateUsersByIDRequest": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "uint64 id",
+                    "type": "integer"
+                },
+                "nickName": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "userEmail": {
+                    "type": "string"
+                },
+                "userGender": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string"
+                },
+                "userPhone": {
+                    "type": "string"
+                }
+            }
+        },
+        "types.UserRolesObjDetail": {
+            "type": "object",
+            "properties": {
+                "roleID": {
+                    "type": "integer"
+                },
+                "userID": {
+                    "type": "integer"
+                }
+            }
+        },
+        "types.UsersObjDetail": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "id": {
+                    "description": "convert to uint64 id",
+                    "type": "integer"
+                },
+                "nickName": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
                 "updatedAt": {
-                    "description": "update time",
+                    "type": "string"
+                },
+                "userEmail": {
+                    "type": "string"
+                },
+                "userGender": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string"
+                },
+                "userPhone": {
                     "type": "string"
                 }
             }

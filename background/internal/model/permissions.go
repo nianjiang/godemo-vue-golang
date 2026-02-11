@@ -24,5 +24,3 @@ var PermissionsColumnNames = map[string]bool{
 	"code":        true,
 	"description": true,
 }
-
-

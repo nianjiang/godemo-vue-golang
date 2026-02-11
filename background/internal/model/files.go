@@ -28,5 +28,3 @@ var FilesColumnNames = map[string]bool{
 	"mime_type":  true,
 	"user_id":    true,
 }
-
-

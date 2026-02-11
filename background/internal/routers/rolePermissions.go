@@ -23,9 +23,9 @@ func rolePermissionsRouter(group *gin.RouterGroup, h handler.RolePermissionsHand
 	// If jwt authentication is not required for all routes, authentication middleware can be added
 	// separately for only certain routes. In this case, g.Use(middleware.Auth()) above should not be used.
 
-	g.POST("/", h.Create)          // [post] /api/v1/rolePermissions
+	g.POST("/", h.Create)                  // [post] /api/v1/rolePermissions
 	g.DELETE("/:roleID", h.DeleteByRoleID) // [delete] /api/v1/rolePermissions/:roleID
 	g.PUT("/:roleID", h.UpdateByRoleID)    // [put] /api/v1/rolePermissions/:roleID
 	g.GET("/:roleID", h.GetByRoleID)       // [get] /api/v1/rolePermissions/:roleID
-	g.POST("/list", h.List)        // [post] /api/v1/rolePermissions/list
+	g.POST("/list", h.List)                // [post] /api/v1/rolePermissions/list
 }

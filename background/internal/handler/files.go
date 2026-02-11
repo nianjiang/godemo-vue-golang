@@ -232,7 +232,7 @@ func (h *filesHandler) List(c *gin.Context) {
 
 	response.Success(c, gin.H{
 		"filess": data,
-		"total":        total,
+		"total":  total,
 	})
 }
 

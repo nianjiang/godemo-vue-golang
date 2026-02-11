@@ -59,7 +59,6 @@ func Test_filesDao_DeleteByID(t *testing.T) {
 	defer d.Close()
 	testData := d.TestData.(*model.Files)
 	expectedSQLForDeletion := "DELETE .*"
-	
 
 	d.SQLMock.ExpectBegin()
 	d.SQLMock.ExpectExec(expectedSQLForDeletion).
@@ -96,7 +95,7 @@ func Test_filesDao_UpdateByID(t *testing.T) {
 	// zero id error
 	err = d.IDao.(FilesDao).UpdateByID(d.Ctx, &model.Files{})
 	assert.Error(t, err)
-	
+
 }
 
 func Test_filesDao_GetByID(t *testing.T) {
@@ -203,7 +202,6 @@ func Test_filesDao_DeleteByTx(t *testing.T) {
 	defer d.Close()
 	testData := d.TestData.(*model.Files)
 	expectedSQLForDeletion := "DELETE .*"
-	
 
 	d.SQLMock.ExpectBegin()
 	d.SQLMock.ExpectExec(expectedSQLForDeletion).
