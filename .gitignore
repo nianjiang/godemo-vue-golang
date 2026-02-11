@@ -1,28 +1,76 @@
-# Angular specific
-/dist/
-/out-tsc/
-/tmp/
-/coverage/
-/e2e/test-output/
-/.angular/
-.angular/
+# Editor/IDE
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.VSCodeCounter/
+.DS_Store
 
-# Node modules and dependency files
-/node_modules/
-/package-lock.json
-/yarn.lock
 
-# Environment files
-/.env
+##############################################
+# Golang
+##############################################
+# Binaries for programs and plugins
+background/*.exe
+background/*.exe~
+background/*.dll
+background/*.so
+background/*.dylib
 
-# Angular CLI and build artefacts
-/.angular-cli.json
-/.ng/
+# Test binary, built with `go test -c`
+background/*.test
+
+# Code coverage profiles and other test artifacts
+background/*.out
+background/coverage.*
+background/*.coverprofile
+background/profile.cov
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# Go workspace file
+background/go.work
+background/go.work.sum
+
+# env file
+background/.env
+
+
+##############################################
+# Vue.js
+##############################################
+web/logs
+web/*.log
+web/npm-debug.log*
+web/yarn-debug.log*
+web/yarn-error.log*
+web/pnpm-debug.log*
+web/lerna-debug.log*
+
+web/node_modules
+web/.DS_Store
+web/dist
+web/dist-ssr
+web/coverage
+web/*.local
+
+web//cypress/videos/
+web//cypress/screenshots/
+
+web/package-lock.json
+web/yarn.lock
 
 # TypeScript cache
-*.tsbuildinfo
+web/*.tsbuildinfo
 
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+##############################################
+# Other
+##############################################
+background/tmp
+background/__debug_bin*
+background/template/
+background/data/

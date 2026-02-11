@@ -1,0 +1,50 @@
+{
+  "folders": [
+    {
+      "path": "background",
+      "name": "background"
+    },
+    {
+      "path": "web",
+      "name": "web"
+    },
+    {
+      "path": ".",
+      "name": "root"
+    }
+  ],
+  "settings": {
+    "go.toolsEnvVars": {
+      "GOPROXY": "https://goproxy.cn,direct",
+      "GONOPROXY": "none;"
+    }
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      
+      {
+        "type": "go",
+        "request": "launch",
+        "name": "Background",
+        "cwd": "${workspaceFolder:background}",
+        "program": "${workspaceFolder:background}/"
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "cwd": "${workspaceFolder:web}",
+        "name": "Web",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": ["run-script", "serve"]
+      }
+    ],
+    "compounds": [
+      {
+        "name": "Both (Background & Web)",
+        "configurations": ["Background", "Web"],
+        "stopAll": true
+      }
+    ]
+  }
+}
