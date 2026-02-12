@@ -21,9 +21,15 @@ The related web frameworks are:
 
 ### Commands
 ```shell
-
+cd background
+go mod tidy
+start.sh
 ```
-
+```shell
+cd web
+pnpm install
+start.sh
+```
 ### Run docker/compose
 ```shell
 
@@ -31,27 +37,42 @@ The related web frameworks are:
 
 
 ## Other
-
 [中文介绍](./docs/README-CN.md)
+
 [Doc for Front Side](./web/README.en_US.md)
+
 [Doc for Server Side](./background/README.md)
+
 [Web URL](http://localhost:9527/home)
+
 [Swagger](http://localhost:8080/swagger/index.html)
+
 []()
+
 []()
+
 []()
+
 []()
+
 []()
+
 []()
+
 []()
+
 []()
+
 []()
+
 []()
+
 []()
+
 []()
+
 []()
+
 []()
-[]()
-[]()
-[]()
+
 []()
