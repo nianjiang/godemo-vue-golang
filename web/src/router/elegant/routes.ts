@@ -74,5 +74,37 @@ export const generatedRoutes: GeneratedRoute[] = [
       constant: true,
       hideInMenu: true
     }
+  },
+  {
+    name: 'test',
+    path: '/test',
+    component: 'layout.base',
+    meta: {
+      title: 'test',
+      i18nKey: 'route.test',
+      order: 10,
+    },
+    children: [
+      {
+        name: 'test_apple',
+        path: '/test/apple',
+        component: 'view.test_apple',
+        meta: {
+          title: 'test_apple',
+          i18nKey: 'route.test_apple',
+          order: 2,
+        }
+      },
+      {
+        name: 'test_banana',
+        path: '/test/banana',
+        component: 'view.test_banana',
+        meta: {
+          title: 'test_banana',
+          i18nKey: 'route.test_banana',
+          order: 1,
+        }
+      }
+    ]
   }
 ];

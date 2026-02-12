@@ -220,6 +220,9 @@ const local: App.I18n.Schema = {
     }
   },
   route: {
+    test: '测试目录',
+    test_apple: '苹果',
+    test_banana: '香蕉',
     login: '登录',
     403: '无权限',
     404: '页面不存在',

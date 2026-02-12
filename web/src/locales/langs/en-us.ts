@@ -224,6 +224,9 @@ const local: App.I18n.Schema = {
     }
   },
   route: {
+    test: 'Test',
+    test_apple: 'Apple',
+    test_banana: 'Banana',
     login: 'Login',
     403: 'No Permission',
     404: 'Page Not Found',
